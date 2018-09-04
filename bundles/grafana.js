@@ -30,7 +30,7 @@ class GrafanaBundle extends Bundle {
 
     let targets = [];
 
-    // debug(body);
+    debug(body);
     let interval = body.intervalMs;
     let from = new Date(body.range.from).getTime();
     let to = new Date(body.range.to).getTime();
@@ -38,27 +38,15 @@ class GrafanaBundle extends Bundle {
     await Promise.all(body.targets.map(async ({ target, type }) => {
       try {
         let series = await this.manager.query(target, { interval, from, to });
-        series.forEach(({ label, entries }) => {
+        series.forEach(({ name, label, entries }) => {
           targets.push({
-            target: `${target}{${label}}`,
+            target: `${name}{${label}}`,
             datapoints: entries.map(({ v, t }) => [ v, t ]),
           });
         });
       } catch (err) {
         console.error('xx', err);
       }
-
-      // let metric = await this.manager.getMetric(target);
-
-      // let labels = metric.getLabels();
-      // console.log(labels);
-
-      // let entries = await metric.getEntries({ label: 'time', interval, from, to });
-      // let targetO = { target: target + '/time', datapoints: [] };
-      // entries.forEach(entry => {
-      //   targetO.datapoints.push([ entry.v, entry.t ]);
-      // });
-      // targets.push(targetO);
     }));
 
     return targets;

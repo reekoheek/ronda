@@ -52,7 +52,7 @@ class Manager {
 
     await Promise.all(labels.map(async label => {
       let entries = await metric.getEntries({ label, from, to, interval });
-      series.push({ label, entries });
+      series.push({ name, label, entries });
     }));
 
     return series;

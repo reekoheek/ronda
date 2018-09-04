@@ -2,6 +2,7 @@ const http = require('http');
 const { Manager } = require('..');
 const Bundle = require('bono');
 const Ping = require('../metrics/ping');
+const Webpage = require('../metrics/webpage');
 const MetricBundle = require('../bundles/metric');
 const GrafanaBundle = require('../bundles/grafana');
 const path = require('path');
@@ -15,6 +16,9 @@ let manager = new Manager({ storage });
 (async () => {
   await manager.addMetric(new Ping({ instance: 'goo.gl' }));
   await manager.addMetric(new Ping({ instance: 'detik.com' }));
+
+  await manager.addMetric(new Webpage({ url: 'http://sagara.id/p/homepage' }));
+  await manager.addMetric(new Webpage({ url: 'http://localhost:9090/graph' }));
 
   // manager.addMetric(new WebPage({ name: 'page-sagara.id' }));
 

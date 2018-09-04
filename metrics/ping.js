@@ -11,10 +11,6 @@ class Ping extends Metric {
     this.stopRunner();
   }
 
-  get labels () {
-    return [ 'time' ];
-  }
-
   startRunner () {
     debug('Starting ping %s ...', this.instance);
     this.runner = spawn('ping', [ this.instance ]);

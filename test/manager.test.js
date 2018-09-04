@@ -27,7 +27,7 @@ describe('Manager', () => {
   });
 
   describe('#query()', () => {
-    it.only('return multiple datapoints', async () => {
+    it('return multiple datapoints', async () => {
       let manager = new Manager();
 
       let metric = new Metric({ kind: 'Foo', instance: 'bar' });
