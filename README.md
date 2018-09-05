@@ -4,7 +4,15 @@ Ronda is monitoring engine
 
 ## Features
 
-- Run behind NAT
+- Metrics work individually as worker
+- Grafana simple json endpoint
+- Build your own metrics
+- Backed with leveldb
+- Simple query
 
-server punya banyak metric
-metric
+## Will be
+
+- Run behind NAT
+- Working from browser rightaway
+- Remote metrics
+- Alerts

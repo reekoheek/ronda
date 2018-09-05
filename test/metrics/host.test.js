@@ -3,7 +3,7 @@ const { Manager } = require('../..');
 const assert = require('assert');
 const os = require('os');
 
-describe.only('Host', () => {
+describe('Host', () => {
   let manager;
 
   afterEach(() => {

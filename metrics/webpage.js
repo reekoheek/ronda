@@ -4,7 +4,7 @@ const debug = require('debug')('ronda:metrics:webpage');
 
 class Webpage extends Metric {
   constructor ({ kind, url, interval = 5000 }) {
-    super({ kind, instance: url.replace(/[\/\\:]+/g, '-') });
+    super({ kind, instance: url.replace(/[/\\:]+/g, '-') });
 
     this.url = url;
     this.interval = interval;

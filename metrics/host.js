@@ -54,7 +54,7 @@ class Host extends Metric {
     await Promise.all(tasks);
 
     if (this.running) {
-      setTimeout(() => this.fetch(), 5000);
+      this.timeout = setTimeout(() => this.fetch(), 5000);
     }
   }
 }

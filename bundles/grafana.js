@@ -1,5 +1,5 @@
 const Bundle = require('bono');
-const debug = require('debug')('ronda:bundles:grafana');
+// const debug = require('debug')('ronda:bundles:grafana');
 
 class GrafanaBundle extends Bundle {
   constructor ({ manager }) {
@@ -53,34 +53,8 @@ class GrafanaBundle extends Bundle {
   }
 
   rAnnotations (ctx) {
-
+    throw new Error('Unimplemented yet');
   }
-
-  // read (ctx) {
-  //   let name = ctx.parameters.name;
-
-  //   let metric = this.manager.metrics.find(metric => metric.name === name);
-  //   if (!metric) {
-  //     ctx.throw(404);
-  //   }
-
-  //   return {
-  //     type: metric.constructor.name,
-  //     name: metric.name,
-  //   };
-  // }
-
-  // async entries (ctx) {
-  //   let name = ctx.parameters.name;
-
-  //   let metric = this.manager.metrics.find(metric => metric.name === name);
-  //   if (!metric) {
-  //     ctx.throw(404);
-  //   }
-
-  //   let entries = await metric.getEntries();
-  //   return entries;
-  // }
 }
 
 module.exports = GrafanaBundle;
