@@ -10,11 +10,8 @@ describe('Ping', () => {
       await manager.addMetric(metric);
 
       await manager.start();
-
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
       await new Promise(resolve => {
-        manager.getStore(metric, 'time').createReadStream().on('data', resolve);
+        manager.getStore(metric, 'time').on('put', resolve);
       });
     } finally {
       await manager.stop();

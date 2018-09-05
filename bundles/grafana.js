@@ -30,7 +30,7 @@ class GrafanaBundle extends Bundle {
 
     let targets = [];
 
-    debug(body);
+    // debug(body);
     let interval = body.intervalMs;
     let from = new Date(body.range.from).getTime();
     let to = new Date(body.range.to).getTime();

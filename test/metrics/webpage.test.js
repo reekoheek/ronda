@@ -10,15 +10,11 @@ describe('Webpage', () => {
       await manager.addMetric(metric);
 
       await manager.start();
-
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
       await new Promise(resolve => {
-        let stream = manager.getStore(metric, 'status').createReadStream();
-        stream.on('data', resolve);
+        manager.getStore(metric, 'status').on('put', resolve);
       });
     } finally {
       await manager.stop();
     }
-  }).timeout(10000);
+  });
 });
