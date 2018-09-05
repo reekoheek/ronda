@@ -47,6 +47,7 @@ class Host extends Metric {
         tasks.push(this.put(`disk_total`, now, result.total));
         tasks.push(this.put(`disk_used`, now, result.used));
         tasks.push(this.put(`disk_free`, now, result.free));
+        resolve();
       });
     });
 

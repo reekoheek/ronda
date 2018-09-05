@@ -2,6 +2,7 @@ const time2buffer = require('./helpers/time2buffer');
 const value2buffer = require('./helpers/value2buffer');
 const buffer2time = require('./helpers/buffer2time');
 const buffer2value = require('./helpers/buffer2value');
+const debug = require('debug')('ronda:metric');
 
 class Metric {
   constructor ({ kind, instance }) {
@@ -20,11 +21,13 @@ class Metric {
   async up (manager) {
     this.manager = manager;
     await this._up();
+    debug('%s up', this.name);
   }
 
   async down () {
     await this._down();
     this.manager = undefined;
+    debug('%s down', this.name);
   }
 
   getStore (label) {
